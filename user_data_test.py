@@ -20,10 +20,19 @@ def test_init(self):
     """
     test init test case to test if the object is initialized properly
     """
-    
+
     self.assertEqual(self.new_user.username, "username")
     self.assertEqual(self.new_user.password, "password")
 
+
+def test_create_new_account(self):
+    """
+    test create new account test case to test if the new user object is
+    saved into the user list
+    """
+
+    self.new_user.save_user()
+    self.assertEquala(len(User.user_list), 1)
 
 if __name__ == "__main__":
     unittest.main()
