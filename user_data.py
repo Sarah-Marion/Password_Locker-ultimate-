@@ -26,7 +26,26 @@ class User:
             if user.username == userName:
                 return True
             else:
-                return False       
+                return False  
+
+
+    @classmethod
+    def confirm_user(cls, userName, passwrd):
+        """
+        confirm_user method that checks if a password matches a username
+        """
+        for user in cls.user_list:
+            if cls.find_user(userName):
+                password_match = user.password
+                if password_match == passwrd:
+                    return True
+                else:
+                    return False
+            else:
+             return False           
+
+
+
 
 
     
