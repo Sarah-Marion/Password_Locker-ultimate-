@@ -56,7 +56,16 @@ class User:
                 user.password = new_pass
                 return User
             else:
-                return                    
+                return 
+
+
+    @classmethod
+    def user_delete_account(self):
+        """
+        user_delete_account method that deletes a particular acount
+        """
+        User.user_list.remove(self)
+                           
 
 
 
