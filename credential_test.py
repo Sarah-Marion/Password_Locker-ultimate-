@@ -41,6 +41,16 @@ class credential_test(unittest.TestCase):
         Credential.profile_list = []
 
 
+    def test_create_multiple_profiles(self):
+        """
+        test_create_multiple_profiles to test if multiple objects can be saved
+        """
+        self.new_profile.save_profile()
+        test_profile = Credential("facebook", "Marion", "devsarahmarion@gmail.com")
+        test_profile.save_profile()
+        self.assertEqual(len(Credential.profile_list), 2)
+
+
 
 
 if __name__ == "__main__":
