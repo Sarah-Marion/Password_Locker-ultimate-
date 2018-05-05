@@ -71,14 +71,21 @@ class credential_test(unittest.TestCase):
         self.assertEqual(test_profile1, search_result)
 
 
-    def tearDown(self):
+    # def tearDown(self):
+    #     """
+    #     teardown method that does clean up after each test case has run
+    #     """
+    #     Credential.profile_list = []    
+
+
+    def test_delete_profile(self):
         """
-        teardown method that does clean up after each test case has run
+        test_delete_profile to test if a user can delete a specific profile
         """
-        Credential.profile_list = []    
-
-
-
+        test_profile1 = Credential("twitter", "Marion", "devsarahmarion@gmail.com")
+        test_profile1.save_profile()
+        test_profile1.delete_profile()
+        self.assertEqual(len(Credential.profile_list), 0)
 
 
 if __name__ == "__main__":
