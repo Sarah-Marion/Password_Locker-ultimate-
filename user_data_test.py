@@ -47,8 +47,18 @@ class user_test(unittest.TestCase):
         """
         self.test_user = User("username", "password1")
         self.test_user.save_user()
-        found_user = User.find("username")
+        found_user = User.find_user("username")
         self.assertTrue(found_user)
+
+
+    def test_username_match_password(self):
+        """
+        test_username_match_password to test if an entered username matches password
+        """
+        self.test_user = User("username", "password1")   
+        self.test_user.save_user()
+        confirm_user_exist = User.confirm_user("username", "password1")
+        self.assertTrue(confirm_user_exist)
 
 
 
