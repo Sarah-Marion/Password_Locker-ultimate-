@@ -103,9 +103,20 @@ class credential_test(unittest.TestCase):
         test_display_all_profiles to test if a user can view all their profiles
         """
         self.assertEqual(Credential.display_profiles(), Credential.profile_list)
-        
 
 
+    
+    def test_generate_random_password(self):
+        """
+        test_generate_random_password to test if a user can generate a random password with a set length
+        """
+        test_profile1 = Credential("twitter", "Marion", "devsarahmarion@gmail.com")
+        generated_password  = test_profile1.generate_random_password(8)
+        test_profile1.profile_password = generated_password
+        test_profile1.save_profile()
+        self.assertTrue(test_profile1.profile_password)
+    
+    
 
 if __name__ == "__main__":
     unittest.main()
