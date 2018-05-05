@@ -69,10 +69,17 @@ class user_test(unittest.TestCase):
         test_alter.save_user()
         change_passwrd = test_alter.change_userpass("username", "password03")
         self.assertEqual(change_passwrd.password, "password03")
-        
 
-
-
+    
+    
+    def test_user_delete_account(self):
+        """
+        test_user_delete_account to test if a user can delete their account
+        """
+        self.test_user = User("username", "password1")   
+        self.test_user.save_user()
+        self.test_user.user_delete_account()
+        self.assertEqual(len(User.user_list), 0)
 
 
 if __name__ == "__main__":
