@@ -20,3 +20,22 @@ class Credential:
         save_profile method saves user object into profile_list
         """
         Credential.profile_list.append(self)
+
+
+
+    @classmethod
+    def check_profile_exist(cls,profile_name, profile_username = None, profile_email = None):
+        """
+        check_profile_exist method checks if there is another matching or similar profile
+        Args:
+            profile to search if it exists
+        Returns:
+            Boolean: True or false depending if the profile exists
+        """
+        
+        for profile in cls.profile_list:
+            if(profile.profile_name == profile_name) or (profile.profile_username == profile_username) or (profile.profile_email == profile_email)
+                return True
+            else:
+                return False    
+
