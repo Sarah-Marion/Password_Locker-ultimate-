@@ -42,7 +42,21 @@ class User:
                 else:
                     return False
             else:
-             return False           
+             return False
+
+
+
+    @classmethod
+    def change_userpass(cls, userName, new_pass):
+        """
+        change_userpass method changes a user's password
+        """
+        for user in cls.user_list:
+            if cls.fimd_user(userName):
+                user.password = new_pass
+                return User
+            else:
+                return                    
 
 
 
