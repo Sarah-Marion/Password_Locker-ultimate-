@@ -98,6 +98,14 @@ class credential_test(unittest.TestCase):
         self.assertEqual(test_profile1.profile_password,pyperclip.paste())
 
 
+    def test_display_all_profiles(self):
+        """
+        test_display_all_profiles to test if a user can view all their profiles
+        """
+        self.assertEqual(Credential.display_profiles(), Credential.profile_list)
+        
+
+
 
 if __name__ == "__main__":
     unittest.main()
