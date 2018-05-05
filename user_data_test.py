@@ -27,12 +27,22 @@ def test_init(self):
 
 def test_create_new_account(self):
     """
-    test create new account test case to test if the new user object is
+    test_create_new_account test case to test if the new user object is
     saved into the user list
     """
 
     self.new_user.save_user()
-    self.assertEquala(len(User.user_list), 1)
+    self.assertEqual(len(User.user_list), 1)
+
+
+def tearDown(self):
+    """
+    teardown method that does clean up after each test case has run
+    """
+    User.user_list = []
+
+
+
 
 if __name__ == "__main__":
     unittest.main()
