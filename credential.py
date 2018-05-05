@@ -54,3 +54,13 @@ class Credential:
                 return profile
 
 
+
+    @classmethod
+    def delete_profile(self):
+        """
+        delete_profile method that deletes a particular profile
+        """
+        Credential.profile_list.remove(self)
+
+
+
