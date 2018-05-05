@@ -88,5 +88,16 @@ class credential_test(unittest.TestCase):
         self.assertEqual(len(Credential.profile_list), 0)
 
 
+    def test_copy_credentials(self):
+        """
+        test_copy_credentials to test if a user can copy an item to the clipboard
+        """
+        test_profile1 = Credential("twitter", "Marion", "devsarahmarion@gmail.com")
+        test_profile1.save_profile()
+        Credential.copy_credentials("twitter")
+        self.assertEqual(test_profile1.profile_password,pyperclip.paste())
+
+
+
 if __name__ == "__main__":
     unittest.main()
