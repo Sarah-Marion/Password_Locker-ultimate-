@@ -53,12 +53,24 @@ class user_test(unittest.TestCase):
 
     def test_username_match_password(self):
         """
-        test_username_match_password to test if an entered username matches password
+        test_username_match_password to test if a password matches a username
         """
         self.test_user = User("username", "password1")   
         self.test_user.save_user()
         confirm_user_exist = User.confirm_user("username", "password1")
         self.assertTrue(confirm_user_exist)
+
+
+    def test_user_change_password(self):
+        """
+        test_user_change_password to test if a user can alter their password
+        """
+        test_alter = User("username", "password1")
+        test_alter.save_user()
+        change_passwrd = test_alter.change_userpass("username", "password03")
+        self.assertEqual(change_passwrd.password, "password03")
+        
+
 
 
 
