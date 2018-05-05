@@ -51,6 +51,34 @@ class credential_test(unittest.TestCase):
         self.assertEqual(len(Credential.profile_list), 2)
 
 
+    def test_profile_exist(self):
+        """
+        test_profile_exist to check if there is another matching or similar profile
+        """
+        test_profile1 = Credential("twitter", "Marion", "devsarahmarion@gmail.com")    
+        test_profile1.save_profile()
+        profile = test_profile1.check_profile_exist("twitter", "Marion", "devsarahmarion@gmail.com")
+        self.assertTrue(profile)
+
+
+    def test_search_profile(self):
+        """
+        test_search_profile to test if a user can be able to search for a profile_email
+        """
+        test_profile1 = Credential("twitter", "Marion", "devsarahmarion@gmail.com")
+        test_profile1.save_profile()    
+        search_result = test_profile1.search_profile("twitter")
+        self.assertEqual(test_profile1, search_result)
+
+
+    def tearDown(self):
+        """
+        teardown method that does clean up after each test case has run
+        """
+        Credential.profile_list = []    
+
+
+
 
 
 if __name__ == "__main__":
