@@ -13,3 +13,10 @@ class Credential:
         self.profile_password = profile_password
     
     profile_list = []
+
+
+    def save_profile(self):
+        """
+        save_profile method saves user object into profile_list
+        """
+        Credential.profile_list.append(self)
