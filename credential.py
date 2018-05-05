@@ -63,4 +63,14 @@ class Credential:
         Credential.profile_list.remove(self)
 
 
+    @classmethod
+    def copy_credentials(cls, item):
+        """
+        copy_credentials method that copies an item to the clipboard
+        """
+
+        profile_found = cls.search_profile(item)
+        pyperclip.copy(profile_found.profile_password)
+
+
 
