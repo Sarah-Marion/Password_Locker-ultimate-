@@ -26,5 +26,13 @@ class credential_test(unittest.TestCase):
         self.assertTrue(self.new_profile.profile_password)
 
 
+    def test_create_new_profile(self):
+        """
+        test_create_new_profile to test if a new object can be saved
+        """
+        self.new_profile.save_profile()
+        self.assertEqual(len(Credential.profile_list), 1)
+
+
 if __name__ == "__main__":
     unittest.main()
