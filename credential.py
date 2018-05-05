@@ -66,11 +66,25 @@ class Credential:
     @classmethod
     def copy_credentials(cls, item):
         """
-        copy_credentials method that copies an item to the clipboard
+        copy_credentials method that copies a credential to the clipboard
         """
 
         profile_found = cls.search_profile(item)
         pyperclip.copy(profile_found.profile_password)
+
+
+
+    @classmethod
+    def generate_random_password(length = 10):
+        """
+        generate_random_password method that returns a randomly generated password
+        Args:
+            length: The actual length of the password that is to be generated
+        """
+        chars = string.ascii_lowercase + string.ascii_uppercase + string.digits
+        generated_password = ''.join(random.choice(chars) for char in range (length))
+        return generated_password   
+
 
 
 
