@@ -76,7 +76,7 @@ class User:
                 return False
 
 
-    @classmethod
+    
     def user_delete_account(self):
         """
         user_delete_account method that deletes a particular acount
