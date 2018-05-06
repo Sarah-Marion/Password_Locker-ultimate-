@@ -15,8 +15,8 @@ def create_new_account(username, password):
     return new_account
 
 
-def check_username_exists(userName):
-    return User.find_user(userName)
+def check_user_exists(userName):
+    return user.username(userName)
 
 
 def save_account(account):
@@ -49,7 +49,7 @@ def delete_profile(profile):
 
 
 def generate_pass(length):
-    generated_password = Credential.generate_random_password(length)
+    generated_password = Credential.generate_random_password(length)  
     return generated_password
 
 
@@ -66,7 +66,7 @@ def copy_password(search_item):
     return Credential.copy_credentials(search_item)
 
 def display_profiles():
-    return Credential.display_profiles()
+    return Credential.profile_list
 
 def  handle_short_codes(short_code):
     short_code = short_code.lower().replace(" ", "")
@@ -84,7 +84,7 @@ def  handle_short_codes(short_code):
             print("Kindly enter Password of the Account(optional)")
             profile_password_entered = input()
 
-            profile_new = Credential(profile_name_entered, profile_username_entered, profile_email_entered, profile_password_entered)
+            new_profile = Credential(profile_name_entered, profile_username_entered, profile_email_entered, profile_password_entered)
             profile_exist = check_profile_exists(profile_name_entered, profile_username_entered, profile_email_entered)
             if profile_exist:
                 print("\n")
@@ -117,7 +117,7 @@ def  handle_short_codes(short_code):
     elif short_code == "gp":
         print("Kindly enter the profile name you want to generate a password for")            
         profile_gen_passwrd = input()
-        profile_to_change = search_profileile(profile_gen_passwrd)
+        profile_to_change = search_profile(profile_gen_passwrd)
         if profile_to_change:
             print("Input the length of password you want:")
             passwrd_length = input()
@@ -173,7 +173,7 @@ def  handle_short_codes(short_code):
             if not found_copy_profile:
                 cprint("\t Profile NOT found!","red",attrs=["bold"])
             else:
-                copy_success = copy_password(search_passwrd)
+                found_copy_profile = copy_password(search_passwrd)
                 paste_passwrd = pyperclip.paste()
                 if paste_passwrd:
                     cprint("\t Copied!!","green")
@@ -316,7 +316,7 @@ def main():
                 if not new_user_password:
                     cprint("You have not entered any password!","red")
                     new_user_password = input()
-                user_already_exist = check_username_exists(new_user_username)
+                user_already_exist = check_user_exists(new_user_username)
                 if not user_already_exist:
                     user_new = User(new_user_username, new_user_password)
                     if not save_account(user_new):
@@ -342,10 +342,9 @@ def main():
                 print("\n")
     except:
            print("\n")
-        #    cprint("An interrupt detected...Exiting..", "red", attrs=["bold"])
+           cprint("An interrupt detected...Exiting..", "red", attrs=["bold"])
            sys.exit()        
 
 
 if __name__ == "__main__":
-        main()
-
+    main()
