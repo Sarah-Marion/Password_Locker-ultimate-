@@ -41,14 +41,15 @@ class user_test(unittest.TestCase):
         User.user_list = []
 
 
-    def test_check_user_exist(self):
+    def test_check_user_exists(self):
         """
-        test_check_user_exist to test if a user exists or not
+        test_check_user_exists to test if a user exists or not
         """
-        self.test_user = User("username", "password1")
-        self.test_user.save_user()
-        found_user = User.find_user("username")
-        self.assertTrue(found_user)
+        self.new_user.save_user()
+        test_user = User("username", "password1")
+        test_user.save_user()
+        user_exists = User.user_exists("username")
+        self.assertTrue(user_exists)
 
 
     def test_username_match_password(self):
