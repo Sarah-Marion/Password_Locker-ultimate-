@@ -91,9 +91,10 @@ def  handle_short_codes(short_code):
                 cprint("New Profile Created".center(terminal_width),"green")
                 print("\n")
             else:
-                print("\n")    
-                cprint("Your Profile Has Not Been Created.Kindly Attempt Once More".center(terminal_width), "red")
-                print("\n")
+                if not save_profile(new_profile):
+                    print("\n")    
+                    cprint("Your Profile Has Not Been Created.Kindly Attempt Once More".center(terminal_width), "red")
+                    print("\n")
 
     elif short_code == "dp":
         show_profile = display_profiles()            
