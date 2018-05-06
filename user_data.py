@@ -18,6 +18,23 @@ class User:
 
 
     @classmethod
+    def user_exists(cls, userName):
+        """
+        Method that checks if a user exists in the user list.
+        Args:
+        username: username to search if the user exists
+        Returns :
+        Boolean: True or false depending if the user exists 
+        """
+        for user in cls.user_list:
+            if user.username == userName:
+                return True
+            else:
+                return False
+
+
+
+    @classmethod
     def find_user(cls, userName, passwrd):
         """
         find_user method that checks if a username already exists
@@ -34,9 +51,9 @@ class User:
         """
         confirm_user method that checks if a password matches a username
         """
-        for user in cls.user_list:
-            if cls.find_user(userName):
-                password_match = user.password
+        for User in cls.user_list:
+            if cls.find_user(userName, passwrd):
+                password_match = User.password
                 if password_match == passwrd:
                     return True
                 else:
@@ -52,11 +69,11 @@ class User:
         change_userpass method changes a user's password
         """
         for user in cls.user_list:
-            if cls.fimd_user(userName):
+            if cls.find_user(userName, new_pass):
                 user.password = new_pass
-                return User
+                return user
             else:
-                return 
+                return False
 
 
     @classmethod
