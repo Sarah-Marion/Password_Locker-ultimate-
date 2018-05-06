@@ -58,15 +58,15 @@ def check_profile_exists(profile_name, profile_username = None, profile_email = 
 
 
 
-def search_profileile(search):
+def search_profile(search):
     return Credential.search_profile(search)
 
 
 def copy_password(search_item):
     return Credential.copy_credentials(search_item)
 
-def display_profile():
-    return Credential.display_profile()
+def display_profiles():
+    return Credential.display_profiles()
 
 def  handle_short_codes(short_code):
     short_code = short_code.lower().replace(" ", "")
@@ -96,7 +96,7 @@ def  handle_short_codes(short_code):
                 print("\n")
 
     elif short_code == "dp":
-        show_profile = display_profile()            
+        show_profile = display_profiles()            
         if not show_profile:
             print("\n")
             cprint("THERE IS NO PROFILE SAVED IN YOUR ACCOUNT".center(terminal_width), "red")
@@ -106,7 +106,7 @@ def  handle_short_codes(short_code):
             print("\n")
             print(("-*-"*25).center(terminal_width))
 
-            for profile in display_profile():
+            for profile in display_profiles():
                 print(f"PROFILE NAME:{profile.profile_name}".center(terminal_width))
                 print(f"PROFILE USERNAME:{profile.profile_username}".center(terminal_width))
                 print(f"PROFILE EMAIL:{profile.profile_email}".center(terminal_width))
@@ -144,7 +144,7 @@ def  handle_short_codes(short_code):
         print("Kindly enter your search")
         search_string = input()
         if search_string:
-            search_result = search_profileile(search_string)
+            search_result = search_profile(search_string)
             if search_result:
                 print("\n")
                 cprint("SEARCH RESULTS".center(terminal_width),"green")
