@@ -49,7 +49,7 @@ def delete_profile(profile):
 
 
 def generate_pass(length):
-    generated_password = Credential.generate_random_password(length)  
+    generated_password = Credential.generate_random_password  
     return generated_password
 
 
