@@ -16,7 +16,7 @@ def create_new_account(username, password):
 
 
 def check_user_exists(userName):
-    return user.username(userName)
+    return User.user_exists(userName)
 
 
 def save_account(account):
