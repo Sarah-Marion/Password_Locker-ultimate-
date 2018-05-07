@@ -1,11 +1,12 @@
 #!/usr/bin/env python3.6
+
 import sys
 import os
 import pyperclip
 from credential import Credential
 from user_data import User
 from pyfiglet import figlet_format
-from termcolor import cprint
+from termcolor import colored, cprint
 from colorama import init
 init(strip=not sys.stdout.isatty())
 
@@ -68,7 +69,7 @@ def copy_password(search_item):
 def display_profiles():
     return Credential.profile_list
 
-def  handle_short_codes(short_code):
+def handle_short_codes(short_code):
     short_code = short_code.lower().replace(" ", "")
     if short_code == "np":
         cprint("You have entered a command to Create a New Profile".center(terminal_width), "black")
@@ -270,81 +271,79 @@ def  handle_short_codes(short_code):
         cprint("You input an unrecognised command".center(terminal_width),"red")
         print("\n")
 
-
 def main():
-    try:
-        cprint(figlet_format('LOCKER', font='starwars'),'green', attrs=['bold'])
-        cprint("\033[1m" +  "Hello and Welcome to the Password Locker".center(terminal_width),"white", attrs=['bold','blink'])
-        while True:
-            print("Do you have an account? Y/N")
-            account_prompt = input().upper().strip()
-            if account_prompt == "Y":
+    cprint(figlet_format('LOCKER', font='speed'),'green', attrs=['bold'])
+    cprint("\033[1m" +  "Hello and Welcome to the Password Locker".center(terminal_width),"white", attrs=['bold','blink'])
+    while True:
+        print("Do you have an account? Y/N")
+        account_prompt = input().upper().strip()
+        if account_prompt == "Y":
+            print("Enter your username:")
+            existing_username = input()
+            if not existing_username:
+                cprint("You have not entered a username !","red")
                 print("Enter your username:")
                 existing_username = input()
-                if not existing_username:
-                    cprint("You have not entered a username !","red")
-                    print("Enter your username:")
-                    existing_username = input()
+            print("Enter your password:")
+            existing_password = input()
+            if not existing_password:
+                cprint("You have not entered a password!","red")
                 print("Enter your password:")
                 existing_password = input()
-                if not existing_password:
-                    cprint("You have not entered a password!","red")
-                    print("Enter your password:")
-                    existing_password = input()
-                login_success = login_user(existing_username, existing_password)
-                if not login_success:
+            login_success = login_user(existing_username, existing_password)
+            if not login_success:
+                print("\n")
+                cprint("Incorrect username / password combination","red")
+                print("\n")
+            else:
+                while True:
+                    print("\033[1m PROFILE CONTROLS:- "+'\033[0m'+"Use these short codes : np - Add a new profile, dp-Display all profiles, gp - generate new password for a profile, search - find a profile, copy - copy password to clipboard, del - delete a profile, logout- logout of session, ex - exit the application")
+                    print("\033[1m ACCOUNT CONTROLS:- "+'\033[0m'+"Use these short codes : acp - Change your account password, delete - Delete your account")
+                    short_code = input()
+                    handle_short_codes(short_code)
+                    if short_code=="logout" or short_code=="delete":
+                        break
+
+        elif account_prompt == "N":
+            print("Enter your details to create a new account".center(terminal_width))
+            print("Please enter your preffered username")
+            new_user_username = input()
+            if not new_user_username:
+                cprint("You have not entered any username!","red")
+                new_user_username = input()
+            print("Please enter your password")
+            new_user_password = input()
+            if not new_user_password:
+                cprint("You have not entered any password!","red")
+                new_user_password = input()
+            user_already_exist = check_user_exists(new_user_username)
+            if not user_already_exist:
+                user_new = User(new_user_username, new_user_password)
+                if not save_account(user_new):
                     print("\n")
-                    cprint("Incorrect username / password combination","red")
+                    cprint("\033[1m Account created successfully \033[0m".center(terminal_width),"green")
                     print("\n")
-                else:
                     while True:
-                        print("\033[1m PROFILE CONTROLS:- "+'\033[0m'+"Use these short codes : np - Add a new profile, dp-Display all profiles, gp - generate new password for a profile, search - find a profile, copy - copy password to clipboard, del - delete a profile, logout- logout of session, ex - exit the application")
+                        print("\033[1m PROFILE CONTROLS:- "+'\033[0m'+"Use these short codes : np - Add a new profile, dp-Display all profiles, gp - generate new password for a profile, search - find a profile, copy - copy password to clipboard, del - delete a profile, logout- logout of session,  ex - exit the application")
                         print("\033[1m ACCOUNT CONTROLS:- "+'\033[0m'+"Use these short codes : acp - Change your account password, delete - Delete your account")
                         short_code = input()
                         handle_short_codes(short_code)
                         if short_code=="logout" or short_code=="delete":
                             break
-
-            elif account_prompt == "N":
-                print("Enter your details to create a new account".center(terminal_width))
-                print("Please enter your preffered username")
-                new_user_username = input()
-                if not new_user_username:
-                    cprint("You have not entered any username!","red")
-                    new_user_username = input()
-                print("Please enter your password")
-                new_user_password = input()
-                if not new_user_password:
-                    cprint("You have not entered any password!","red")
-                    new_user_password = input()
-                user_already_exist = check_user_exists(new_user_username)
-                if not user_already_exist:
-                    user_new = User(new_user_username, new_user_password)
-                    if not save_account(user_new):
-                        print("\n")
-                        cprint("\033[1m Account created successfully \033[0m".center(terminal_width),"green")
-                        print("\n")
-                        while True:
-                            print("\033[1m PROFILE CONTROLS:- "+'\033[0m'+"Use these short codes : np - Add a new profile, dp-Display all profiles, gp - generate new password for a profile, search - find a profile, copy - copy password to clipboard, del - delete a profile, logout- logout of session,  ex - exit the application")
-                            print("\033[1m ACCOUNT CONTROLS:- "+'\033[0m'+"Use these short codes : acp - Change your account password, delete - Delete your account")
-                            short_code = input()
-                            handle_short_codes(short_code)
-                            if short_code=="logout" or short_code=="delete":
-                                break
-                else:
-                    print("\n")
-                    cprint("The username is already in use","magenta")
-                    cprint("Please try another username","magenta")
-                    print("\n")
-
             else:
                 print("\n")
-                cprint("You Input an unrecognised command...Please enter Y/N!","red")
+                cprint("The username is already in use","magenta")
+                cprint("Please try another username","magenta")
                 print("\n")
-    except:
-           print("\n")
-           cprint("An interrupt detected...Exiting..", "red", attrs=["bold"])
-           sys.exit()        
+
+        else:
+            print("\n")
+            cprint("You Input an unrecognised command...Please enter Y/N!","red")
+            print("\n")
+
+        print("\n")
+        cprint("An interrupt detected...Exiting..", "red", attrs=["bold"])
+        sys.exit()        
 
 
 if __name__ == "__main__":

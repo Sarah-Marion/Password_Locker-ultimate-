@@ -6,11 +6,12 @@ class Credential:
     """
     class that generates new instances of user credentials
     """
-    def __init__(self, profile_name, profile_username = None, profile_email = None, profile_password = None):
+    def __init__(self, profile_name, display_profiles = None, profile_username = None, profile_email = None, profile_password = True):
         self.profile_name = profile_name
         self.profile_username = profile_username
         self.profile_email = profile_email
         self.profile_password = profile_password
+        self.display_profiles = display_profiles
     
     profile_list = []
 
@@ -55,7 +56,7 @@ class Credential:
 
 
 
-    @classmethod
+    
     def delete_profile(self):
         """
         delete_profile method that deletes a particular profile
@@ -71,6 +72,15 @@ class Credential:
 
         profile_found = cls.search_profile(item)
         pyperclip.copy(profile_found.profile_password)
+
+
+
+    @classmethod
+    def display_all_profiles(cls):
+            '''
+            method that returns the all the profiles
+            '''
+            return cls.profile_list  
 
 
 

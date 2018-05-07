@@ -69,13 +69,7 @@ class credential_test(unittest.TestCase):
         test_profile1.save_profile()    
         search_result = test_profile1.search_profile("twitter")
         self.assertEqual(test_profile1, search_result)
-
-
-    # def tearDown(self):
-    #     """
-    #     teardown method that does clean up after each test case has run
-    #     """
-    #     Credential.profile_list = []    
+  
 
 
     def test_delete_profile(self):
@@ -110,8 +104,8 @@ class credential_test(unittest.TestCase):
         """
         test_generate_random_password to test if a user can generate a random password with a set length
         """
-        test_profile1 = Credential("twitter", "Marion", "devsarahmarion@gmail.com")
-        generated_password  = test_profile1.generate_random_password(8)
+        test_profile1 = Credential("Marion", "devsarahmarion@gmail.com")
+        generated_password  = test_profile1.generate_random_password(10) #pylint: disable-msgE112
         test_profile1.profile_password = generated_password
         test_profile1.save_profile()
         self.assertTrue(test_profile1.profile_password)
