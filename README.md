@@ -36,6 +36,13 @@
 > * termcolor
 > * colorama
 
+## Dependancy Installments
+
+> * pip3 install pyperclip
+> * pip3 install pyfiglet
+> * pip3 install termcolor
+> * pip3 install colorama
+
 ## Known Bugs
 
 > It does not have bugs.But if any problems should occur, email me at devsarahmarion@gmail.com
