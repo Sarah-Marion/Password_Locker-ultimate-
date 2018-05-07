@@ -15,13 +15,26 @@
 > Clone [This Repository](https://github.com/Sarah-Marion/Password_Locker.git) and run the
 `run.py` file.
 
+## Technical Requirements
+
+* Contains two classes:- User data and Credential data
+* Authenticates users to see their credentials
+* Contains docstrings to document methods and functions
+* Contains a test class for all the classes testing each individual method in a class
+
+## User Stories
+
+> * A user can create an account with details such as login and password
+> * A user can generate passwors for a new account
+> * Store existing login credentials
+
 ## Technologies Used
 
-> Python3.6
-> pyperclip
-> pyfiglet
-> termcolor
-> colorama
+> * Python3.6
+> * pyperclip
+> * pyfiglet
+> * termcolor
+> * colorama
 
 ## Known Bugs
 

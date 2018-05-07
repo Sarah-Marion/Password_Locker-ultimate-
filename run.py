@@ -50,8 +50,8 @@ def delete_profile(profile):
 
 
 def generate_pass(length):
-    generated_password = Credential.generate_random_password  
-    return generated_password
+    generated_password = Credential.generate_random_password()  
+    return generated_password()
 
 
 def check_profile_exists(profile_name, profile_username = None, profile_email = None):
@@ -72,7 +72,7 @@ def display_profiles():
 def handle_short_codes(short_code):
     short_code = short_code.lower().replace(" ", "")
     if short_code == "np":
-        cprint("You have entered a command to Create a New Profile".center(terminal_width), "black")
+        cprint("You have entered a command to Create a New Profile".center(terminal_width), "blue")
         print("Kindly input a Profile Name...example github")
         profile_name_entered = input()
         if not profile_name_entered:
@@ -94,7 +94,7 @@ def handle_short_codes(short_code):
             else:
                 if not save_profile(new_profile):
                     print("\n")    
-                    cprint("Your Profile Has Not Been Created.Kindly Attempt Once More".center(terminal_width), "red")
+                    cprint("Your Profile Has Been Created.".center(terminal_width), "green")
                     print("\n")
 
     elif short_code == "dp":
@@ -104,7 +104,7 @@ def handle_short_codes(short_code):
             cprint("THERE IS NO PROFILE SAVED IN YOUR ACCOUNT".center(terminal_width), "red")
             print("\n")
         else:
-            cprint("Here's a list of all your profiles".center(terminal_width),"black")
+            cprint("Here's a list of all your profiles".center(terminal_width),"blue")
             print("\n")
             print(("-*-"*25).center(terminal_width))
 
@@ -173,7 +173,7 @@ def handle_short_codes(short_code):
             cprint("You MUST input the profile you want to copy password","red")
         else:
             if not found_copy_profile:
-                cprint("\t Profile NOT found!","red",attrs=["bold"])
+                cprint("\t Profile found!","red",attrs=["bold"])
             else:
                 found_copy_profile = copy_password(search_passwrd)
                 paste_passwrd = pyperclip.paste()

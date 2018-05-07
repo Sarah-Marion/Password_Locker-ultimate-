@@ -85,14 +85,14 @@ class Credential:
 
 
     @classmethod
-    def generate_random_password(length = 10):
+    def generate_random_password(length):
         """
         generate_random_password method that returns a randomly generated password
         Args:
             length: The actual length of the password that is to be generated
         """
         chars = string.ascii_lowercase + string.ascii_uppercase + string.digits
-        generated_password = ''.join(random.choice(chars) for char in range (length))
+        generated_password = ''.join(random.choice(chars) for char in range(length))
         return generated_password   
 
 
