@@ -12,8 +12,16 @@
 
 ## Setup/Installation Requirements
 
-> Clone [This Repository](https://github.com/Sarah-Marion/Password_Locker.git) and run the
-`run.py` file.
+> Clone [This Repository](https://github.com/Sarah-Marion/Password_Locker.git) and run the `run.py`file by executing the following commands:-
+> * `chmod +x run.py` then `run.py`
+
+## Dependancy Installments
+
+> * pip3 install python3.6
+> * pip3 install pyperclip
+> * pip3 install pyfiglet
+> * pip3 install termcolor
+> * pip3 install colorama
 
 ## Technical Requirements
 
@@ -42,6 +50,17 @@
 > * pip3 install pyfiglet
 > * pip3 install termcolor
 > * pip3 install colorama
+
+## Specifications
+| Behavior        | Input           | Outcome  |
+| ------------- |:-------------:| -----:|
+| Create an account | User Name : John <br/> Password : doe | An account is created |
+| Display account names | N/A | Display a list of user names for Password Locker accounts |
+| Log into an account | User Name : John <br/> Password : doe | Log into the users account |
+| Store existing log in credential | Account : Githib <br/> Password : doe1 | Create and save the user's credentials | 
+| Display a specific users credentials | N/A | List of the user's credentials | 
+| Generate a password for a new credential | Account : Password Locker | Generate a password for the user. <br/> Create and save the user's credential with the generated password | 
+| Log out | N/A | Log out of Password Locker account |
 
 ## Known Bugs
 

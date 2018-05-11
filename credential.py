@@ -65,6 +65,14 @@ class Credential:
 
 
     @classmethod
+    def display_all_profiles(cls):
+            '''
+            method that returns the all the profiles
+            '''
+            return cls.profile_list  
+
+
+    @classmethod
     def copy_credentials(cls, item):
         """
         copy_credentials method that copies a credential to the clipboard
@@ -74,18 +82,8 @@ class Credential:
         pyperclip.copy(profile_found.profile_password)
 
 
-
     @classmethod
-    def display_all_profiles(cls):
-            '''
-            method that returns the all the profiles
-            '''
-            return cls.profile_list  
-
-
-
-    @classmethod
-    def generate_random_password(length):
+    def generate_random_password(cls, length):
         """
         generate_random_password method that returns a randomly generated password
         Args:

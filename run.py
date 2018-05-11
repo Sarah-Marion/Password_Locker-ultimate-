@@ -3,6 +3,8 @@
 import sys
 import os
 import pyperclip
+import string
+import random
 from credential import Credential
 from user_data import User
 from pyfiglet import figlet_format
@@ -49,9 +51,12 @@ def delete_profile(profile):
     profile.delete_profile()
 
 
-def generate_pass(length):
-    generated_password = Credential.generate_random_password()  
-    return generated_password()
+def generate_random_password(length):
+    generate_random_password = Credential.generate_random_password(length)  
+    return generate_random_password
+    # chars = string.ascii_lowercase + string.ascii_uppercase + string.digits
+    # generated_password = ''.join(random.choice(chars) for char in range(length))
+    # return int(generated_password)
 
 
 def check_profile_exists(profile_name, profile_username = None, profile_email = None):
@@ -122,21 +127,14 @@ def handle_short_codes(short_code):
         profile_to_change = search_profile(profile_gen_passwrd)
         if profile_to_change:
             print("Input the length of password you want:")
-            passwrd_length = input()
-            try:
-                pw_length = int(passwrd_length)
-                if passwrd_length.isdigit():
-                    new_passwrd = generate_pass(pw_length)
-                    profile_to_change.profile_password = new_passwrd
-                    print("\n")
-                    cprint("A New Password was Generated and has been Successfully Saved".center(terminal_width), "green")
-                    print("\n")
-                else:
-                    cprint("\t Negative numbers are NOT allowed", "red")    
-                    print("\n")
-            except ValueError:
-                cprint("\t You MUST input a number...example 7", "red")        
-                print("\n")
+            passwrd_length = int(input())
+            
+            new_passwrd = generate_random_password(passwrd_length)
+            profile_to_change.profile_password = new_passwrd
+            print("\n")
+            cprint("A New Password was Generated and has been Successfully Saved".center(terminal_width), "green")
+            print("\n")
+                
         else:
             print("\n")        
             cprint("There is no Profile with That Name".center(terminal_width), "red")
@@ -206,7 +204,7 @@ def handle_short_codes(short_code):
             cprint("The profile does NOT exist".center(terminal_width),"red")
             print("\n")
 
-    elif short_code=="acp":
+    elif short_code=="cap":
         cprint("WE NEED TO CONFIRM ITS YOU!".center(terminal_width),"red",attrs=['bold','blink'])
         print("Enter your username")
         passwrd_change_username = input()
@@ -324,8 +322,8 @@ def main():
                     cprint("\033[1m Account created successfully \033[0m".center(terminal_width),"green")
                     print("\n")
                     while True:
-                        print("\033[1m PROFILE CONTROLS:- "+'\033[0m'+"Use these short codes : np - Add a new profile, dp-Display all profiles, gp - generate new password for a profile, search - find a profile, copy - copy password to clipboard, del - delete a profile, logout- logout of session,  ex - exit the application")
-                        print("\033[1m ACCOUNT CONTROLS:- "+'\033[0m'+"Use these short codes : acp - Change your account password, delete - Delete your account")
+                        print("\033[1m PROFILE CONTROLS:- "+'\033[0m'+"Use these short codes : np - Add a new profile, dp-Display all profiles, gp - generate new password for a profile, search - find a profile, copy - copy password to clipboard, del - delete a profile, logout- logout  ex - exit the application")
+                        print("\033[1m ACCOUNT CONTROLS:- "+'\033[0m'+"Use these short codes : cap - Change your account password, delete - Delete your account")
                         short_code = input()
                         handle_short_codes(short_code)
                         if short_code=="logout" or short_code=="delete":

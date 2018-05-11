@@ -82,30 +82,29 @@ class credential_test(unittest.TestCase):
         self.assertEqual(len(Credential.profile_list), 0)
 
 
+
+    # def test_display_all_profiles(self):
+    #     """
+    #     test_display_all_profiles to test if a user can view all their profiles
+    #     """
+    #     self.assertEqual(Credential.display_profiles(), Credential.profile_list)
+
     def test_copy_credentials(self):
         """
-        test_copy_credentials to test if a user can copy an item to the clipboard
+        test copy_credentials to test if a user can be able to copy an item to the clipboard
         """
-        test_profile1 = Credential("twitter", "Marion", "devsarahmarion@gmail.com")
+        test_profile1 = Credential("twitter","Marion","devsarahmarion@gmail.com","testPassword")
         test_profile1.save_profile()
         Credential.copy_credentials("twitter")
         self.assertEqual(test_profile1.profile_password,pyperclip.paste())
 
 
-    def test_display_all_profiles(self):
-        """
-        test_display_all_profiles to test if a user can view all their profiles
-        """
-        self.assertEqual(Credential.display_profiles(), Credential.profile_list)
-
-
-    
     def test_generate_random_password(self):
         """
         test_generate_random_password to test if a user can generate a random password with a set length
         """
-        test_profile1 = Credential("Marion", "devsarahmarion@gmail.com")
-        generated_password  = test_profile1.generate_random_password(10) #pylint: disable-msgE112
+        test_profile1 = Credential("Marion","devsarahmarion@mail.com")
+        generated_password = test_profile1.generate_random_password
         test_profile1.profile_password = generated_password
         test_profile1.save_profile()
         self.assertTrue(test_profile1.profile_password)
