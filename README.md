@@ -44,23 +44,27 @@
 > * termcolor
 > * colorama
 
-## Dependancy Installments
-
-> * pip3 install pyperclip
-> * pip3 install pyfiglet
-> * pip3 install termcolor
-> * pip3 install colorama
-
 ## Specifications
+
 | Behavior        | Input           | Outcome  |
 | ------------- |:-------------:| -----:|
-| Create an account | User Name : John <br/> Password : doe | An account is created |
-| Display account names | N/A | Display a list of user names for Password Locker accounts |
-| Log into an account | User Name : John <br/> Password : doe | Log into the users account |
-| Store existing log in credential | Account : Githib <br/> Password : doe1 | Create and save the user's credentials | 
+| Do you have an account | Yes/No : John <br/> Password : doe | An account is created or not. 
+| Create an account | User Name : Sarah <br/> Password : blah | An account is created |
+| Display account names | N/A | Display a list of user names for Password Locker accounts | 
 | Display a specific users credentials | N/A | List of the user's credentials | 
-| Generate a password for a new credential | Account : Password Locker | Generate a password for the user. <br/> Create and save the user's credential with the generated password | 
+| Generate a password for a new credential | Account : Any | Generate a password for the user. <br/> Create and save the user's credential with the generated password |
+| Copy a password | copy | Password is copied and ready for pasting wherever
 | Log out | N/A | Log out of Password Locker account |
+
+## Short code handles
+
+> * np - Create a new password
+> * dp - Display all profiles
+> * gp - Generate a new password
+> * search - Find a profile
+> * copy - Copy password to clipboard
+> * del - Delete a profile
+> * logout - Logout of session
 
 ## Known Bugs
 
