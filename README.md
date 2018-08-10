@@ -10,10 +10,12 @@
 
 > A simple Python Application which runs on the terminal for the purpose of a user to generate strong passwords and store them for various accounts.
 
+![Terminal App](passwordlocker.png)
+
 ## Setup/Installation Requirements
 
 > Clone [This Repository](https://github.com/Sarah-Marion/Password_Locker.git) and run the `run.py`file by executing the following commands:-
-> * `chmod +x run.py` then `run.py`
+> * `chmod +x run.py` then `python3.6 run.py`
 
 ## Dependancy Installments
 
